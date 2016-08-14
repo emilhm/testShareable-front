@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-4 categoryContainer">
+    <ul class="category">
+      <li ui-sref="home({category: category.id})" ng-repeat="category in vm.categorys">
+          {{category.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <div class="questionsContainer">
+      <div ui-sref="question({id: question.id})" class="questions" ng-repeat="question in vm.questions">
+        <div class="title">{{question.question}}</div>
+        <div class="footerQuestion row">
+          <div class="col-xs-4">
+            <i class="fa fa-heart"></i>
+            <i><span>3 respuestas</span></i>
+          </div>
+          <div class="col-xs-8 text-rigth">
+            <i>{{question.user.name}}</i>
+            <i>{{question.createdAt | dateFormat}}</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "name": "test",
+  "private": true,
+  "version": "0.0.1",
+  "description": "test shareable app",
+  "keywords": [],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "del": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-connect": "*",
+    "gulp-less": "*",
+    "gulp-minify-css": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-notify": "*",
+    "gulp-open": "*",
+    "gulp-rename": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-watch": "*",
+    "lodash": "^4.5.0",
+    "lodash.minby": "^4.2.0"
+  },
+  "author": "Emil Hernandez",
+  "license": "MIT License",
+  "devDependencies": {
+    "concurrent-transform": "1.0.0",
+    "gulp-livereload": "^3.8.1"
+  }
+}
