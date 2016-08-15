@@ -1,34 +1,62 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('test')
-        .controller('questionController', questionController);
+  angular
+    .module('test')
+    .controller('questionController', questionController);
 
-    questionController.$inject = ['dataService', '$stateParams', '$state'];
+  questionController.$inject = ['dataService', '$stateParams', '$state'];
 
-    /* @ngInject */
-    function questionController(dataService,$stateParams, $state) {
-        var vm = this;
+  /* @ngInject */
+  function questionController(dataService, $stateParams, $state) {
+    var vm = this;
+    vm.submit = submit;
 
-        activate();
+    activate();
 
-        function activate() {
-          if (!$stateParams.id) {
-            $state.go('home');
-          }
-          getQuestion();
-        }
-
-        function getQuestion(){
-          dataService.getQuestion($stateParams.id).then(
-            function (data) {
-              vm.question = data;
-            },
-            function (err) {
-              console.log(err);
-            }
-          )
-        };
+    function activate() {
+      if (!$stateParams.id) {
+        $state.go('home');
+      }
+      getQuestion();
+      getAnswer();
     }
+
+    function getQuestion() {
+      dataService.getQuestion($stateParams.id).then(
+        function(data) {
+          vm.question = data;
+        },
+        function(err) {
+          console.log(err);
+        });
+    };
+
+    function getAnswer() {
+      dataService.getAnswer($stateParams.id).then(
+        function(data) {
+          vm.answer = data;
+        },
+        function(err) {
+          console.log(err);
+        });
+    };
+
+    function submit() {
+      var payload = {
+        response: vm.answerForm,
+        questions: $stateParams.id,
+        user: 1
+      };
+      dataService.postAnswer(payload).then(
+        function(resp) {
+          vm.answerForm='';
+          vm.answer.push(resp);
+        },
+        function(err) {
+          console.log(err);
+        });
+
+    }
+  }
 })();

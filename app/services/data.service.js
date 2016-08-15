@@ -14,7 +14,9 @@
       getQuestions: getQuestions,
       getQuestion: getQuestion,
       getCategory: getCategory,
-      getQuestionByCategory: getQuestionByCategory
+      getQuestionByCategory: getQuestionByCategory,
+      postAnswer: postAnswer,
+      getAnswer: getAnswer
     };
 
     return dataService;
@@ -70,6 +72,40 @@
     function getCategory() {
       var deferred = $q.defer();
       $http.get(BaseApiUrl + '/category/')
+        .success(function(data, status, headers, config) {
+          deferred.resolve(data);
+        })
+        .error(function(status) {
+          deferred.reject(status);
+        });
+      return deferred.promise;
+    }
+
+    function postAnswer(payload) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/response/',
+        method: "post",
+        params: payload
+      })
+        .success(function(data, status, headers, config) {
+          deferred.resolve(data);
+        })
+        .error(function(status) {
+          deferred.reject(status);
+        });
+      return deferred.promise;
+    }
+    function getAnswer(questions) {
+      var deferred = $q.defer();
+      var payload = {
+        'questions': questions
+      }
+      $http({
+        url: BaseApiUrl + '/response/',
+        method: "get",
+        params: payload
+      })
         .success(function(data, status, headers, config) {
           deferred.resolve(data);
         })

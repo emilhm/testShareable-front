@@ -9,7 +9,7 @@
 
     $stateProvider
       .state('home', {
-        url: '/:category',
+        url: '/home/:category',
         views: {
           "main": {
             controller: 'homeController',
@@ -27,8 +27,18 @@
             templateUrl: 'app/question/question.html'
           }
         }
+      })
+      .state('login', {
+        url: '/login',
+        views: {
+          "main": {
+            controller: 'loginController',
+            controllerAs: 'vm',
+            templateUrl: 'app/login/login.html'
+          }
+        }
       });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
   }
 })();
