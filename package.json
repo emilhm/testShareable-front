@@ -20,7 +20,9 @@
     "gulp-uglify": "*",
     "gulp-watch": "*",
     "lodash": "^4.5.0",
-    "lodash.minby": "^4.2.0"
+    "lodash.minby": "^4.2.0",
+    "gulp-clean-css": "*",
+    "gulp-minify": "*"
   },
   "author": "Emil Hernandez",
   "license": "MIT License",
