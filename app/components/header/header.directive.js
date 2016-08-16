@@ -18,11 +18,19 @@
         return directive;
     }
 
-    headerController.$inject = [];
+    headerController.$inject = ['authService', '$state', '$rootScope'];
 
     /* @ngInject */
-    function headerController() {
+    function headerController(authService, $state, $rootScope) {
         var vm = this;
+        vm.logout = logout;
 
+        function logout() {
+            authService.logout().then(function(data) {
+                $state.go('login');
+            }, function(err) {
+                $rootScope.$emit('toastr:error', err.data.message);
+            })
+        }
     }
 })();

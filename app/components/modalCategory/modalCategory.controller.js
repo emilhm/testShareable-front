@@ -5,13 +5,15 @@
         .module('test')
         .controller('modalCategoryController', modalCategoryController);
 
-    modalCategoryController.$inject = ['dataService', '$rootScope'];
+    modalCategoryController.$inject = ['dataService', '$rootScope', '$uibModalInstance'];
 
     /* @ngInject */
-    function modalCategoryController(dataService, $rootScope) {
+    function modalCategoryController(dataService, $rootScope, $uibModalInstance) {
         var vm = this;
         vm.submit = submit;
-
+        function close() {
+            $uibModalInstance.dismiss('cancel');
+        }
         function submit() {
             dataService.postCategory(vm.payload).then(
                 function(resp) {

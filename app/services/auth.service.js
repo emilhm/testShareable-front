@@ -42,13 +42,12 @@
       $http({
           url: BaseApiUrl + '/logout/',
           method: "post",
-          params: payload
         })
         .then(
           function(response) {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
-            deferred.resolve(data);
+            deferred.resolve(response);
           },
           function(err) {
             deferred.reject(err);
