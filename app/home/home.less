@@ -1,14 +1,24 @@
-.categoryContainer{
-  ul{
-    list-style: none;
-    padding: 0;
-    li{
-      text-align: center;
-      font-size: 1em;
-      margin: 1em 0;
-      text-transform: capitalize;
+.categoryContainer {
+  .category{
+    input{
+      max-width: 500px;
+      margin: auto;
     }
   }
+    ul {
+        list-style: none;
+        padding: 0;
+        @media (max-width: 767px) {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        li {
+            text-align: center;
+            font-size: 1em;
+            margin: 1em 0;
+            text-transform: capitalize;
+        }
+    }
 }
 span.titleHeader {
     font-size: 1.4em;

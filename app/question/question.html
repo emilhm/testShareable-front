@@ -9,9 +9,9 @@
       <li ng-repeat="answer in vm.answer">
         <div class="title">{{answer.response}}</div>
         <div class="footerAnswer row">
-          <div class="col-xs-4">
-            <button ng-class="answer.rating.voteUser != undefined ? '': answer.rating.vote ? '':'active'" class="buttonApp fa fa-thumbs-o-up"><span>{{answer.rating.positive}}</span></button>
-            <button ng-class="answer.rating.voteUser != undefined ? '': !answer.rating.vote ? '':'active'" class="buttonApp fa fa-thumbs-o-down">{{answer.rating.negative}}</button>
+          <div class="col-xs-4" >
+            <button ng-click="vm.ratingAnswer(answer.id,true)" ng-class="answer.vote ? 'active':''" class="buttonApp fa fa-thumbs-up"><span>{{answer.rating.positive}}</span></button>
+            <button ng-click="vm.ratingAnswer(answer.id,false)" ng-class="answer.vote == undefined ? '' : !answer.vote ? 'active':''" class="buttonApp fa fa-thumbs-down">{{answer.rating.negative}}</button>
           </div>
           <div class="col-xs-8 text-rigth">
             <i>{{answer.user.name}}</i>

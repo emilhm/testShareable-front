@@ -29,6 +29,8 @@
         var vm = this;
         vm.openModalQuestion = openModalQuestion;
         vm.deleteQuestion = deleteQuestion;
+        vm.likeQuestion = likeQuestion;
+        vm.isLike = isLike;
         vm.user = JSON.parse(localStorage.getItem('user'));
 
         function openModalQuestion(size, data) {
@@ -44,6 +46,37 @@
                     }
                 }
             });
+        };
+
+        function isLike(idQuestion) {
+          var payload = {
+            'question': idQuestion,
+            'user': vm.user.id
+          };
+          dataService.getLikes(payload).then(
+              function(resp) {
+                if (resp[0]) {
+                  vm.question.isLike = resp[0].like;
+                }
+              },
+              function(err) {
+                  $rootScope.$emit('toastr:error', err.data.message);
+              });
+        };
+
+        function likeQuestion(idQuestion) {
+          var payload = {
+            'question': idQuestion,
+            'user': vm.user.id
+          };
+          dataService.postLikes(payload).then(
+              function(resp) {
+                  $rootScope.$emit('toastr:success', 'success');
+                  $rootScope.$emit('$reload');
+              },
+              function(err) {
+                  $rootScope.$emit('toastr:error', err.data.message);
+              });
         };
 
         function deleteQuestion(id) {

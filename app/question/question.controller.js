@@ -11,6 +11,7 @@
     function questionController(dataService, $stateParams, $state, $rootScope) {
         var vm = this;
         vm.submit = submit;
+        vm.ratingAnswer = ratingAnswer;
         vm.user = JSON.parse(localStorage.getItem('user'));
 
         activate();
@@ -22,6 +23,22 @@
             getQuestion();
             getAnswer();
         }
+
+        function ratingAnswer(answer, vote) {
+            var payload = {
+                'answer': answer,
+                'user': vm.user.id,
+                'vote': vote
+            };
+            dataService.postRating(payload).then(
+                function(resp) {
+                    $rootScope.$emit('toastr:success', 'success');
+                    $rootScope.$emit('$reload');
+                },
+                function(err) {
+                    $rootScope.$emit('toastr:error', err.data.message);
+                });
+        };
 
         function getQuestion() {
             dataService.getQuestion($stateParams.id).then(
@@ -37,6 +54,10 @@
             dataService.getRating(id).then(
                 function(data) {
                     vm.answer[index].rating = data;
+                    if(data.voteUser != undefined)
+                    {
+                      vm.answer[index].vote = data.voteUser;
+                    }
                 },
                 function(err) {
                     $rootScope.$emit('toastr:error', err.data.message);

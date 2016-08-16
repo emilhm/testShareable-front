@@ -12,7 +12,7 @@
 <div class="footerQuestion row">
   <div class="col-xs-6">
     <i><span>{{vm.question.cantAnswer}} respuestas</span></i>
-    <i ng-class="vm.question.isLike ? 'active':''" class="fa fa-heart"><span>{{vm.question.likes}}</span></i>
+    <i ng-click="vm.likeQuestion(vm.question.id)" ng-init="vm.isLike(vm.question.id);" ng-class="vm.question.isLike ? 'active':''" class="fa fa-heart"><span>{{vm.question.likes}}</span></i>
   </div>
   <div class="col-xs-6 text-rigth">
     <i>{{vm.question.user.name}}</i>

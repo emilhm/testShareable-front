@@ -1,22 +1,26 @@
 <div name="singup" class="login">
-  <form ng-submit="vm.singup()">
-    <div class="form-group">
-      <label>Nombre Completo</label>
-      <input class="form-control" ng-model="vm.user.name" placeholder="Full name" required="true">
-    </div>
-    <div class="form-group">
-      <label>Email address</label>
-      <input type="email" class="form-control" ng-model="vm.user.email" placeholder="Email" required="true">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required="true">
-    </div>
-    <div class="form-group">
-      <label>Confirm password</label>
-      <input type="password" class="form-control" ng-model="vm.user.password2" placeholder="Password" required="true">
-    </div>
-    {{singup.$valid}}
-    <button type="submit" class="btn btn-default"  ng-disabled="singup.$invalid">Submit</button>
-  </form>
+    <form ng-submit="vm.singup()">
+        <p>
+            Registrate
+        </p>
+        <div class="form-group">
+            <label>Nombre Completo</label>
+            <input class="form-control" ng-model="vm.user.name" placeholder="Full name" required="true">
+        </div>
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" ng-model="vm.user.email" placeholder="Email" required="true">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required="true">
+        </div>
+        <div class="form-group">
+            <label>Confirm password</label>
+            <input type="password" class="form-control" ng-model="vm.user.password2" placeholder="Password" required="true">
+        </div>
+        {{singup.$valid}}
+        <button type="submit" class="btn btn-default">Registrate</button> or
+        <a ui-sref="login">Login</a>
+    </form>
 </div>
