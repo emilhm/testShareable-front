@@ -28,7 +28,7 @@
           vm.question = data;
         },
         function(err) {
-          console.log(err);
+          $rootScope.$emit('toastr:error',err.data.message);
         });
     };
 
@@ -38,7 +38,7 @@
           vm.answer = data;
         },
         function(err) {
-          console.log(err);
+          $rootScope.$emit('toastr:error',err.data.message);
         });
     };
 
@@ -52,9 +52,10 @@
         function(resp) {
           vm.answerForm='';
           vm.answer.push(resp);
+          vm.question.cantAnswer++;
         },
         function(err) {
-          console.log(err);
+          $rootScope.$emit('toastr:error',err.data.message);
         });
 
     }

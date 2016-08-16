@@ -37,8 +37,18 @@
             templateUrl: 'app/login/login.html'
           }
         }
+      })
+      .state('singup', {
+        url: '/singup',
+        views: {
+          "main": {
+            controller: 'singupController',
+            controllerAs: 'vm',
+            templateUrl: 'app/singup/singup.html'
+          }
+        }
       });
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/');
   }
 })();

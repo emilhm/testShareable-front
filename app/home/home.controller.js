@@ -24,7 +24,7 @@
               vm.questions = data;
             },
             function (err) {
-              console.log(err);
+              $rootScope.$emit('toastr:error',err.data.message);
             }
           )
         };
@@ -34,7 +34,7 @@
               vm.questions = data;
             },
             function (err) {
-              console.log(err);
+              $rootScope.$emit('toastr:error',err.data.message);
             }
           )
         }
@@ -44,7 +44,7 @@
               vm.categorys = data;
             },
             function (err) {
-              console.log(err);
+              $rootScope.$emit('toastr:error',err.data.message);
             }
           )
         };

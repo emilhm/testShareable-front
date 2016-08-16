@@ -1,16 +1,7 @@
 <div class="questionResponse">
   <div class="questionsContainer">
     <div class="questions" >
-      <div class="title">{{vm.question.question}}</div>
-      <div class="footerQuestion row">
-        <div class="col-xs-4">
-          <i><span>{{vm.question.cantAnswer}} respuestas</span></i>
-        </div>
-        <div class="col-xs-8 text-rigth">
-          <i>{{vm.question.user.name}}</i>
-          <i>{{vm.question.createdAt | dateFormat}}</i>
-        </div>
-      </div>
+      <question-directive question="vm.question"></question-directive>
     </div>
   </div>
   <div class="answer">

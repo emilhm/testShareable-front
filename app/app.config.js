@@ -5,8 +5,7 @@
   appConfig.$inject = ['$stateProvider','$httpProvider'];
 
   function appConfig($stateProvider , $httpProvider) {
-
-
+    $httpProvider.interceptors.push('interceptorsService');
   }
 
 }());

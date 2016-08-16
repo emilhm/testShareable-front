@@ -64,7 +64,7 @@ var vendorScripts = [
     BaseVendors + 'angular-sanitize/angular-sanitize.min.js',
     BaseVendors + 'angular-ui-router/release/angular-ui-router.min.js',
     BaseVendors + 'bootstrap/dist/js/bootstrap.min.js',
-    BaseVendors + 'angular-toastr/dist/angular-toastr.min.js',
+    BaseVendors + 'angular-toastr/dist/angular-toastr.tpls.min.js',
     BaseVendors + 'angular-animate/angular-animate.min.js',
     BaseVendors + 'angular-bootstrap/ui-bootstrap-tpls.min.js',
     BaseVendors + 'moment/min/moment.min.js'
@@ -90,12 +90,12 @@ gulp.task('scripts', function() {
     gulp.src(appScripts)
         .pipe(sourcemaps.init())
         .pipe(concat('app.min.js'))
-        .pipe(minify({
-            ext: {
-                min: '.js'
-            },
-            ignoreFiles: ['.combo.js', '-min.js']
-        }))
+        // .pipe(minify({
+        //     ext: {
+        //         min: '.js'
+        //     },
+        //     ignoreFiles: ['.combo.js', '-min.js']
+        // }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('www/'))
         .pipe(livereload());
