@@ -1,10 +1,13 @@
 <div class="headerQuestion">
   <a ui-sref="question({id: vm.question.id})" ng-if="vm.details" class="title">{{vm.question.question}}</a>
   <div ng-if="!vm.details" class="title">{{vm.question.question}}</div>
-  <div class="action">
-    <button class="buttonApp fa fa-pencil"></button>
-    <button class="buttonApp fa fa-trash-o"></button>
+  <div class="action" ng-if="vm.user.id == vm.question.user.id">
+    <button class="buttonApp fa fa-pencil" ng-click="vm.openModalQuestion('md',vm.question)"></button>
+    <button class="buttonApp fa fa-trash-o" ng-click="vm.deleteQuestion(vm.question.id)"></button>
   </div>
+</div>
+<div ng-class="vm.details ? 'bodyNotDetails':''" class="bodyQuestion">
+  {{vm.question.message}}
 </div>
 <div class="footerQuestion row">
   <div class="col-xs-6">

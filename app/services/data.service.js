@@ -16,6 +16,9 @@
       getCategory: getCategory,
       getQuestionByCategory: getQuestionByCategory,
       postAnswer: postAnswer,
+      postQuestion: postQuestion,
+      deleteQuestion: deleteQuestion,
+      updateQuestion: updateQuestion,
       getAnswer: getAnswer,
       getRating: getRating
     };
@@ -90,6 +93,49 @@
         });
       return deferred.promise;
     }
+
+    function postQuestion(payload) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/questions/',
+        method: "post",
+        params: payload
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+
+    function updateQuestion(payload) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/questions/'+payload.id,
+        method: "PUT",
+        params: payload
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+
+    function deleteQuestion(payload) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/questions/',
+        method: "delete",
+        params: payload
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+
     function getAnswer(questions) {
       var deferred = $q.defer();
       var payload = {

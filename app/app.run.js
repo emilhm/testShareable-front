@@ -19,6 +19,11 @@
     $rootScope.$on('$viewContentLoaded', function() {
 
     });
+    $rootScope.$on('$reload', function() {
+      $state.transitionTo($state.current, $stateParams, {
+        reload: true, inherit: false, notify: true
+      });
+    });
 
     $rootScope.$on('toastr:error', function(event, error) {
       if (angular.isObject(error)) {

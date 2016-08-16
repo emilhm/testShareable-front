@@ -18,7 +18,7 @@
       <div class="headerQuestion">
         <span class="titleHeader">Preguntas</span>
         <div class="action">
-          <button class="buttonApp fa fa-plus"></button>
+          <button ng-click="vm.openModalQuestion('md')" class="buttonApp fa fa-plus"></button>
         </div>
       </div>
       <div class="questions" ng-repeat="question in vm.questions">

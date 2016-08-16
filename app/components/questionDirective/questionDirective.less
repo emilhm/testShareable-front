@@ -1,39 +1,49 @@
 .questionsContainer {
-  width: 100%;
-  border: 1px solid @border-color;
-  .questions {
-    padding: 0.5em;
-    background: white;
-    border-bottom: 1px solid @border-color;
-    .title {
-      font-size: 1.4em;
-      font-weight: bold;
-      padding: 10px 2px;
-    }
-    .footerQuestion {
-      font-size: 0.9em;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .fa {
-        font-size: 1.5em;
-      }
-      i {
-        margin: 0 8px;
-        span{
-          margin: 0 3px;
+    width: 100%;
+    border: 1px solid @border-color;
+    .questions {
+        padding: 0.5em;
+        background: white;
+        border-bottom: 1px solid @border-color;
+        .title {
+            font-size: 1.4em;
+            font-weight: bold;
+            padding: 10px 2px;
         }
-      }
+        .bodyQuestion {
+            padding: 1em;
+            font-size: 1.2em;
+            border-bottom: 1px solid @border-color;
+            &.bodyNotDetails {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        .footerQuestion {
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            .fa {
+                font-size: 1.5em;
+            }
+            i {
+                margin: 0 8px;
+                span {
+                    margin: 0 3px;
+                }
+            }
+        }
     }
-  }
 }
-.headerQuestion{
-  border-bottom: 1px solid @border-color;
-  .action{
-    float: right;
-    .fa-plus{
-      background: transparent;
-      font-size: 1.4em;
-      margin: 1px;
+.headerQuestion {
+    border-bottom: 1px solid @border-color;
+    .action {
+        float: right;
+        .fa-plus {
+            background: transparent;
+            font-size: 1.4em;
+            margin: 1px;
+        }
     }
-  }
 }
