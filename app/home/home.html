@@ -1,29 +1,36 @@
 <div class="row">
-  <div class="col-xs-3 categoryContainer">
-    <ul class="category">
-      <li>
-        <a href="#/home/">
-            ALL
-        </a>
-      </li>
-      <li ui-sref="home({category: category.id})" ng-repeat="category in vm.categorys">
-        <a>
-            {{category.name}}
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-xs-12 col-sm-9 border-left">
-    <div class="questionsContainer">
-      <div class="headerQuestion">
-        <span class="titleHeader">Preguntas</span>
-        <div class="action">
-          <button ng-click="vm.openModalQuestion('md')" class="buttonApp fa fa-plus"></button>
+    <div class="col-xs-3 categoryContainer">
+        <div class="headerQuestion">
+            <span class="titleHeader">Categorias</span>
+            <div class="action">
+                <button ng-click="vm.openModalCategory('md')" class="buttonApp fa fa-plus"></button>
+            </div>
         </div>
-      </div>
-      <div class="questions" ng-repeat="question in vm.questions">
-        <question-directive question="question" details="true"></question-directive>
-      </div>
+
+        <ul class="category">
+            <li>
+                <a href="#/home/">
+                    ALL
+                </a>
+            </li>
+            <li ui-sref="home({category: category.id})" ng-repeat="category in vm.categorys">
+                <a>
+                  {{category.name}}
+              </a>
+            </li>
+        </ul>
     </div>
-  </div>
+    <div class="col-xs-12 col-sm-9 border-left">
+        <div class="questionsContainer">
+            <div class="headerQuestion">
+                <span class="titleHeader">Preguntas</span>
+                <div class="action">
+                    <button ng-click="vm.openModalQuestion('md')" class="buttonApp fa fa-plus"></button>
+                </div>
+            </div>
+            <div class="questions" ng-repeat="question in vm.questions">
+                <question-directive question="question" details="true"></question-directive>
+            </div>
+        </div>
+    </div>
 </div>

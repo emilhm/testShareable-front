@@ -11,6 +11,7 @@
     function homeController(dataService, $stateParams, $rootScope, $uibModal) {
         var vm = this;
         vm.openModalQuestion = openModalQuestion;
+        vm.openModalCategory = openModalCategory;
 
         activate();
 
@@ -18,6 +19,7 @@
             $stateParams.category ? getQuestionByCategory() : getQuestions();
             getCategory();
         }
+
         function openModalQuestion(size, data) {
 
             var modalInstance = $uibModal.open({
@@ -31,6 +33,16 @@
                         return data;
                     }
                 }
+            });
+        };
+
+        function openModalCategory(size) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'app/components/modalCategory/modalCategory.html',
+                controller: 'modalCategoryController',
+                controllerAs: 'vm',
+                size: size
             });
         };
 

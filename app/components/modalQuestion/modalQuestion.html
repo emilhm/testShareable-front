@@ -13,7 +13,9 @@
         </div>
         <div class="form-group">
             <label>Categoria</label>
-            <input class="form-control" ng-model="vm.payload.category" placeholder="Categoria" required="true">
+            <select class="form-control" ng-model="vm.payload.category" required="true">
+              <option ng-repeat="item in vm.categoryData" value="{{item.id}}">{{item.name}}</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>

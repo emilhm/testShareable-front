@@ -17,6 +17,7 @@
       getQuestionByCategory: getQuestionByCategory,
       postAnswer: postAnswer,
       postQuestion: postQuestion,
+      postCategory: postCategory,
       deleteQuestion: deleteQuestion,
       updateQuestion: updateQuestion,
       getAnswer: getAnswer,
@@ -84,6 +85,20 @@
       var deferred = $q.defer();
       $http({
         url: BaseApiUrl + '/response/',
+        method: "post",
+        params: payload
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+
+    function postCategory(payload) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/category/',
         method: "post",
         params: payload
       }).then(function(data) {
