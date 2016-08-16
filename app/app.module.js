@@ -4,6 +4,7 @@
     .module('test', ['ui.router',
       'ngSanitize',
       'ngAnimate',
-      'toastr'
+      'toastr',
+      'ui.bootstrap'
     ]);
 })();

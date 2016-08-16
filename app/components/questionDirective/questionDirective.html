@@ -1,5 +1,11 @@
-<a ui-sref="question({id: vm.question.id})" ng-if="vm.details" class="title">{{vm.question.question}}</a>
-<div ng-if="!vm.details" class="title">{{vm.question.question}}</div>
+<div class="headerQuestion">
+  <a ui-sref="question({id: vm.question.id})" ng-if="vm.details" class="title">{{vm.question.question}}</a>
+  <div ng-if="!vm.details" class="title">{{vm.question.question}}</div>
+  <div class="action">
+    <button class="buttonApp fa fa-pencil"></button>
+    <button class="buttonApp fa fa-trash-o"></button>
+  </div>
+</div>
 <div class="footerQuestion row">
   <div class="col-xs-6">
     <i><span>{{vm.question.cantAnswer}} respuestas</span></i>
