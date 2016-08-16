@@ -8,11 +8,13 @@
     if (localStorage.getItem('token')) {
       var token = localStorage.getItem('token')
       $http.defaults.headers.common['Authorization'] = token;
+      $rootScope.authenticated = true;
     }
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       $rootScope.currentState = toState;
       if (localStorage.getItem('token')) {
         var token = localStorage.getItem('token')
+        $rootScope.authenticated = true;
         $http.defaults.headers.common['Authorization'] = token;
       }
     });

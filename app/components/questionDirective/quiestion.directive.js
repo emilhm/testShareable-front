@@ -30,7 +30,6 @@
         vm.openModalQuestion = openModalQuestion;
         vm.deleteQuestion = deleteQuestion;
         vm.likeQuestion = likeQuestion;
-        vm.isLike = isLike;
         vm.user = JSON.parse(localStorage.getItem('user'));
 
         function openModalQuestion(size, data) {
@@ -55,7 +54,7 @@
           };
           dataService.getLikes(payload).then(
               function(resp) {
-                if (resp[0]) {
+                if (resp[0].like) {
                   vm.question.isLike = resp[0].like;
                 }
               },

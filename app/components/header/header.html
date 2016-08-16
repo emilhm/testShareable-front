@@ -1,4 +1,4 @@
 <div ui-sref="home" class="header">
   askme.com
-  <i ng-click="vm.logout()" class="fa fa-sign-out" aria-hidden="true"></i>
+  <i ng-if="$root.authenticated" ng-click="vm.logout()" class="fa fa-sign-out" aria-hidden="true"></i>
 </div>
