@@ -3,8 +3,10 @@
   margin: auto;
 }
 .response {
+  margin-top: 1em;
   padding: 1em;
-  background: gray;
+  background: white;
+  border: 1px solid @border-color;
   span {
     font-weight: bold;
     font-size: 1.5em;
@@ -16,9 +18,14 @@
   }
 }
 .answer {
-  background: gray;
+  background: white;
+  border: 1px solid @border-color;
   ul {
     list-style: none;
+    padding: 0 15px;
+    li{
+      border-bottom: 1px solid @border-color;
+    }
     .title {
       font-weight: bold;
       font-size: 1.5em;
@@ -26,6 +33,7 @@
     }
     .footerAnswer {
       font-size: 0.9em;
+      margin-bottom: 5px;
       .fa {
         font-size: 1.5em;
       }

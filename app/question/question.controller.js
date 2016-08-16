@@ -5,10 +5,10 @@
     .module('test')
     .controller('questionController', questionController);
 
-  questionController.$inject = ['dataService', '$stateParams', '$state'];
+  questionController.$inject = ['dataService', '$stateParams', '$state', '$rootScope'];
 
   /* @ngInject */
-  function questionController(dataService, $stateParams, $state) {
+  function questionController(dataService, $stateParams, $state, $rootScope) {
     var vm = this;
     vm.submit = submit;
 
@@ -25,17 +25,31 @@
     function getQuestion() {
       dataService.getQuestion($stateParams.id).then(
         function(data) {
-          vm.question = data;
+          vm.question = data[0];
         },
         function(err) {
           $rootScope.$emit('toastr:error',err.data.message);
         });
     };
 
+    function getRating(id,index) {
+      dataService.getRating(id).then(
+        function (data) {
+          vm.answer[index].rating = data;
+        },
+        function (err) {
+          $rootScope.$emit('toastr:error',err.data.message);
+        }
+      );
+    }
+
     function getAnswer() {
       dataService.getAnswer($stateParams.id).then(
-        function(data) {
-          vm.answer = data;
+        function(response) {
+          vm.answer = response;
+          for (var i = vm.answer.length - 1; i >= 0 ; i--) {
+            getRating(vm.answer[i].id,i);
+          }
         },
         function(err) {
           $rootScope.$emit('toastr:error',err.data.message);

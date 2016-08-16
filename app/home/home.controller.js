@@ -5,10 +5,10 @@
         .module('test')
         .controller('homeController', homeController);
 
-    homeController.$inject = ['dataService', '$stateParams'];
+    homeController.$inject = ['dataService', '$stateParams','$rootScope'];
 
     /* @ngInject */
-    function homeController(dataService, $stateParams) {
+    function homeController(dataService, $stateParams,$rootScope) {
         var vm = this;
 
         activate();

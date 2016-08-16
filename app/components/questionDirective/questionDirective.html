@@ -1,11 +1,11 @@
 <a ui-sref="question({id: vm.question.id})" ng-if="vm.details" class="title">{{vm.question.question}}</a>
 <div ng-if="!vm.details" class="title">{{vm.question.question}}</div>
 <div class="footerQuestion row">
-  <div class="col-xs-4">
+  <div class="col-xs-6">
     <i><span>{{vm.question.cantAnswer}} respuestas</span></i>
-    <i class="fa fa-heart"><span>{{vm.question.likes}}</span></i>
+    <i ng-class="vm.question.isLike ? 'active':''" class="fa fa-heart"><span>{{vm.question.likes}}</span></i>
   </div>
-  <div class="col-xs-8 text-rigth">
+  <div class="col-xs-6 text-rigth">
     <i>{{vm.question.user.name}}</i>
     <i>{{vm.question.createdAt | dateFormat}}</i>
   </div>

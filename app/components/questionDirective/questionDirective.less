@@ -1,11 +1,10 @@
 .questionsContainer {
   width: 100%;
-  margin: 1em auto;
+  border: 1px solid @border-color;
   .questions {
     padding: 0.5em;
-    margin: 1em auto;
-    max-width: 800px;
-    background: gray;
+    background: white;
+    border-bottom: 1px solid @border-color;
     .title {
       font-size: 1.4em;
       font-weight: bold;
@@ -13,14 +12,16 @@
     }
     .footerQuestion {
       font-size: 0.9em;
+      margin-top: 10px;
+      margin-bottom: 10px;
       .fa {
         font-size: 1.5em;
       }
-      .fa-reply {
-        margin: 0;
-      }
       i {
         margin: 0 8px;
+        span{
+          margin: 0 3px;
+        }
       }
     }
   }

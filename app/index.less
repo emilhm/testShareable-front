@@ -1,9 +1,21 @@
-@principal-color: #000;
+@principal-color: #fafafc;
+@border-color: #e6e6e6;
 @color-letter: #fff;
 
+.mainContainer{
+  max-width: 1024px;
+  margin: 1em auto;
+}
 .text-rigth{
   text-align: right;
 }
 body{
-  background: lightgrey;
+  background: @principal-color;
+}
+.buttonApp{
+  border: 0;
+  padding: 3px;
+}
+.border-left{
+  border-left: 1px solid @border-color;
 }

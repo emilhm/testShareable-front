@@ -16,7 +16,8 @@
       getCategory: getCategory,
       getQuestionByCategory: getQuestionByCategory,
       postAnswer: postAnswer,
-      getAnswer: getAnswer
+      getAnswer: getAnswer,
+      getRating: getRating
     };
 
     return dataService;
@@ -29,12 +30,10 @@
         params: {
           'id': id
         }
-      })
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
     }
@@ -48,11 +47,10 @@
           'category': category
         }
       })
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+        .then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
     }
@@ -60,23 +58,21 @@
     function getQuestions() {
       var deferred = $q.defer();
       $http.get(BaseApiUrl + '/questions/')
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+        .then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
-    }
+    };
 
     function getCategory() {
       var deferred = $q.defer();
       $http.get(BaseApiUrl + '/category/')
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+        .then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
     }
@@ -87,12 +83,10 @@
         url: BaseApiUrl + '/response/',
         method: "post",
         params: payload
-      })
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
     }
@@ -105,12 +99,22 @@
         url: BaseApiUrl + '/response/',
         method: "get",
         params: payload
-      })
-        .success(function(data, status, headers, config) {
-          deferred.resolve(data);
-        })
-        .error(function(status) {
-          deferred.reject(status);
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+    function getRating(id) {
+      var deferred = $q.defer();
+      $http({
+        url: BaseApiUrl + '/rating/'+id+'/',
+        method: "get"
+      }).then(function(data) {
+          deferred.resolve(data.data);
+        },function(err) {
+          deferred.reject(err);
         });
       return deferred.promise;
     }
